@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Run sudo su to avoid permission issues
+
 download_and_install_node_exporter () {
 	curl -SL https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-armv7.tar.gz > node_exporter.tar.gz && \
 	sudo tar -xvf node_exporter.tar.gz -C /usr/local/bin/ --strip-components=1
@@ -51,7 +53,7 @@ fi
 
 create_systemd_service_config_nodeexporter
 if [ $? -eq 0 ]; then
-	echo "Successfully created systemd serviuce conf"
+	echo "Successfully created systemd service conf"
 else
     echo "Failed during creating systemd conf"
     exit 1

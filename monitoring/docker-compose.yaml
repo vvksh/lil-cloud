@@ -6,7 +6,7 @@ volumes:
 services:
   grafana:
     image: grafana/grafana:6.7.0
-    restart: unless-stopped
+    restart: always
     networks:
       - default
     ports:
