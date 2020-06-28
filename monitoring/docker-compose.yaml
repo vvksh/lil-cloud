@@ -14,7 +14,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - grafana_data:/var/lib/grafana
+      - ./grafana_data:/var/lib/grafana
   prometheus:
     image: prom/prometheus
     user: "1001"
@@ -22,13 +22,12 @@ services:
     privileged: true
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus_data:/prometheus
+      - ./prometheus_data:/prometheus
     command: 
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--web.enable-lifecycle'
     ports:
       - 9090:9090
-
 
 
 
