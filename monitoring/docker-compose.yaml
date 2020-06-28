@@ -1,3 +1,4 @@
+# Run in docker-compose on master not in swarm, prometheus has some issues; https://github.com/prometheus/prometheus/issues/6943
 version: '3.7'
 
 volumes:
@@ -13,10 +14,6 @@ services:
       - 3000:3000
     volumes:
       - grafana_data:/var/lib/grafana
-    deploy:
-      placement:
-        constraints:
-          - "node.role==manager"
   prometheus:
     image: prom/prometheus
     restart: always
@@ -25,13 +22,11 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     command: 
+      - '--config.file=/etc/prometheus/prometheus.yml'
       - '--web.enable-lifecycle'
     ports:
       - 9090:9090
-    deploy:
-      placement:
-        constraints:
-          - "node.role==manager"
+
 
 
 
