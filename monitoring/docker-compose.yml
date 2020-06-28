@@ -1,0 +1,38 @@
+version: '3.7'
+
+volumes:
+  prometheus_data: {}
+  grafana_data: {}
+services:
+  grafana:
+    image: grafana/grafana:6.7.0
+    restart: unless-stopped
+    networks:
+      - default
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+    deploy:
+      placement:
+        constraints:
+          - "node.role==manager"
+  prometheus:
+    image: prom/prometheus
+    restart: always
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command: 
+      - '--web.enable-lifecycle'
+    ports:
+      - 9090:9090
+    deploy:
+      placement:
+        constraints:
+          - "node.role==manager"
+
+
+
+        
+
