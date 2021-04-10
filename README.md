@@ -18,3 +18,12 @@ After adding docker config; restart docker daemon
 
 reload prometheus
 `curl -X POST http://localhost:9090/-/reload`
+
+# Start docker and prometheus on master
+
+```
+cd monitoring
+docker compose up -d
+```
+
+everything else should be setup (it should read the previous configs), if not good luck!
