@@ -1,6 +1,6 @@
 # lil-cloud
 
-A 3-node raspberry pi cluster with one master and 2 slaves
+A 3-node raspberry pi cluster with one master (middle one) and 2 slaves
 
 
 <img src="https://user-images.githubusercontent.com/9902184/118766921-ed5aef00-b831-11eb-9d54-933c252ae5d8.jpg" alt="drawing" width="200"/>
