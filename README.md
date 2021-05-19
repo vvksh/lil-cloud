@@ -2,6 +2,9 @@
 
 A 3-node raspberry pi cluster with one master and 2 slaves
 
+![IMG_2267](https://user-images.githubusercontent.com/9902184/118766921-ed5aef00-b831-11eb-9d54-933c252ae5d8.jpg)
+
+
 Features:
 - [monitoring](#rpi-monitoring)
 - shared NFS memory (see [#4](/../../issues/4))
