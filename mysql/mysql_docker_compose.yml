@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  mysql:
+    image: mysql:latest
+    cap_add:
+      - SYS_NICE
+    ports:
+      - 3306:3306
+    volumes:
+      - /clusterfs/mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=s3cret
+      - MYSQL_PASSWORD=abcfgy
+      - MYSQL_USER=viveks
+      - MYSQL_DATABASE=lcdb
+    deploy:
+	    placement: 
+        constraints: 
+            - node.hostname == slave1  
+            - node.hostname == slave2
