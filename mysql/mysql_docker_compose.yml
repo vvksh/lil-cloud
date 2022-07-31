@@ -10,12 +10,11 @@ services:
     volumes:
       - /clusterfs/mysql_data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=s3cret
-      - MYSQL_PASSWORD=abcfgy
-      - MYSQL_USER=viveks
-      - MYSQL_DATABASE=lcdb
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
     deploy:
-	    placement: 
-        constraints: 
-            - node.hostname == slave1  
-            - node.hostname == slave2
+      placement: 
+        constraints: [node.hostname != masterpi]
+  
